@@ -1,7 +1,7 @@
-import { app, server } from "./socket/socket.js";
+import "dotenv/config"; 
+import { app, server, allowedOrigins } from "./socket/socket.js";
 import express from "express";
-import cors from "cors"; 
-import dotenv from "dotenv"; 
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js"; 
 import authRoute from "./routes/authRoutes.js";
@@ -9,13 +9,11 @@ import messageRoute from "./routes/messageRoutes.js";
 import groupRoute from "./routes/groupRoutes.js";
 
 
-dotenv.config(); 
-
-connectDB(); 
+connectDB();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: allowedOrigins,
     credentials: true,
   })
 );

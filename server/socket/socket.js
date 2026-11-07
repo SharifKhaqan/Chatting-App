@@ -7,9 +7,14 @@ const app = express();
 
 const server = http.createServer(app);
 
+// Frontend URLs allowed to connect (comma-separated in CLIENT_URL)
+export const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+  .split(",")
+  .map((url) => url.trim());
+
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: allowedOrigins,
     credentials: true,
   },
 });
