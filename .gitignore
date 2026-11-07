@@ -1,0 +1,19 @@
+# Secrets - never upload these
+.env
+.env.*
+!.env.example
+
+# Dependencies (re-installed with npm install)
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
